@@ -34,7 +34,7 @@ export class AccountController {
         const token = await this.authService.createToken(customer.document, customer.email,customer.user.roles);
         return new ResultDto(null, true, token, null);
     }
-
+/*
     @Get('')
 
     @UseGuards(JwtAuthGuard)
@@ -42,4 +42,5 @@ export class AccountController {
     findAll(@Req() request) {
         return [];
     }
+    */
 }

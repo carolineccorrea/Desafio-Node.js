@@ -9,6 +9,7 @@ import { CustomerController } from './controllers/customer.controller';
 import { CustomerSchema } from './schemas/customer.schema';
 import { UserSchema } from './schemas/user.schema';
 import { AccountService } from './services/account.service';
+import { CustomerService } from './services/customer.service';
 
 @Module({
   imports: [
@@ -32,6 +33,6 @@ import { AccountService } from './services/account.service';
     HttpModule
   ],
   controllers: [CustomerController, AccountController],
-  providers: [AccountService,AuthService,JwtStrategy]
+  providers: [AccountService,CustomerService,AuthService,JwtStrategy]
 })
 export class BackofficeModule { }

@@ -15,11 +15,14 @@ import { Customer } from '../models/customer.model';
 import { Result } from '../models/result.model';
 import { User } from '../models/user.model';
 import { AccountService } from '../services/account.service';
+import { CustomerService } from '../services/customer.service';
 
 @Controller('v1/customers')
 export class CustomerController {
 
-    constructor(private readonly accountService: AccountService) {
+    constructor(private readonly accountService: AccountService,
+     private readonly customerService: CustomerService
+    ) {
     }
 
 
