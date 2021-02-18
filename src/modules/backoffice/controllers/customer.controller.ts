@@ -34,8 +34,8 @@ export class CustomerController {
     @Post()
     //@UseInterceptors(new ValidatorInterceptor(new CreateCustomerContract()))
     async post(@Body() model: CreateCustomerDTO) {
-        const nuser = new User(model.document, model.password, true)
-        const user = await this.accountService.create(nuser);
+        const newUser = new User(model.document, model.password, true,['user'])
+        const user = await this.accountService.create(newUser);
         return new Result('Cliente criado com sucesso', true, user, null);
     }
 

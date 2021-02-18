@@ -2,7 +2,6 @@ import { JwtService } from '@nestjs/jwt';
 import { Injectable } from '@nestjs/common';
 import { AccountService } from 'src/modules/backoffice/services/account.service';
 import { JwtPayload } from '../interfaces/jwt-payload.interface';
-import { User } from 'src/modules/backoffice/models/user.model';
 
 @Injectable()
 export class AuthService {
@@ -11,13 +10,17 @@ export class AuthService {
         private readonly jwtService: JwtService,
     ) { }
 
-    async createToken() {
-        const user: JwtPayload = {username: 'test@email.com'};
+    async createToken(document, email, roles: string[]) {
+        const user: JwtPayload = {
+            document: document,
+            email: email,
+            roles: roles
+        };
         return this.jwtService.sign(user);
     }
 
     async validateUser(payload: JwtPayload): Promise<any> {
-         return await this.accountService.findOneByUserName(payload.username);
-       // return payload;
+        // return await this.accountService.findOneByUsername(payload.username);
+        return payload;
     }
 }
