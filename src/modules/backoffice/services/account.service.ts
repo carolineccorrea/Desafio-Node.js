@@ -32,11 +32,11 @@ export class AccountService {
             return new User(username,"123456789",true)
         }
         */
-    async authenticate(username, password): Promise<Customer> {
-        return await this.customerModel
+       async authenticate(username, password): Promise<ICustomer> {
+        var customer = await this.customerModel
             .findOne({ document: username })
-            .populate('user','-password')
+            .populate('user')
             .exec();
-
+        return customer;    
     }
 }
